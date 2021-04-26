@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Buy</title>
+	
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <style type="text/css">
+  body {font-family: "Lato", sans-serif;background: url(https://i0.wp.com/www.earthriversup.com/wp-content/uploads/2016/10/Plain-design-pattern-dark-background-image-HD-resolution-latest-pack.jpg;);}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Sikk-Ass</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ><a th:href="@{/}">Home</a></li>
+      <li ><a href="vid.html">Find Us</a></li>
+       <li> <a th:href="@{/buyfg}">Buy</a></li>
+        <li><a th:href="@{/Coinregistration}">Sell</a></li>
+      <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>
+      
+      
+      </ul>
+  </div>
+</nav>
+<br><br>
+
+	<div>
+		<h1 style="color:white;">List of Coins</h1>
+	</div>
+	
+	<div>
+		<table class="table  table-bordered">
+			<thead>
+				<tr>
+					<th style="color:white;">Coin ID</th>
+					<th style="color:white;">Coin Name</th>
+					<th style="color:white;">Description</th>
+					<th style="color:white;">Period</th>
+					<th style="color:white;">Price</th>
+					<th style="color:white;">Weight</th>
+					<th style="color:white;">Buy</th>
+				</tr>
+			</thead>
+			<tbody style="color:white;">
+				<tr th:each="Coin: ${listBuyers}">
+					<td th:text="${Coin.coinid}"></td>
+					<td th:text="${Coin.coinname}"></td>
+					<td th:text="${Coin.description}"></td>
+					<td th:text="${Coin.period}"></td>
+					<td th:text="${Coin.price}"></td>
+					<td th:text="${Coin.weight}"></td>
+					<td><a th:href="@{/BuyerRegistration/cid={cid} (cid=${Coin.coinid})}" th:text="${Coin.buy}"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
