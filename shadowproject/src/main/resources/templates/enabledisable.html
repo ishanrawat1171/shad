@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Details</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div align="center">
+    
+        <br />
+        <form action="#" th:action="@{/save/{email}(email = ${mem.email})}" >
+
+       
+		<input type="radio" id="enable" name="gender" value="enable">
+<label for="male">Enable</label><br><br>
+<input type="radio" id="disable" name="gender" value="disable">
+<label for="female">Disable</label><br>
+				
+			<br><button type="submit" class="btn btn-primary">Submit</button>
+			
+			
+				
+			
+				
+				
+        </form>
+    </div>
+</body>
+</html>
