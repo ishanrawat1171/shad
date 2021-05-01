@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import net.codejava.model.Member;
+import net.codejava.model.Rrf;
+import net.codejava.model.RrfSkillLinker;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,19 +23,23 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.codejava.DAO.MemberDao;
-
+import net.codejava.DAO.RrfDao;
+import net.codejava.DAO.RrfSkillLinkerDao;
 import net.codejava.DAO.BuyerRepository;
 import net.codejava.DAO.CheckoutRepository;
-import net.codejava.DAO.CoinRepository;
+import net.codejava.DAO.EmployeeDao;
+import net.codejava.DAO.EmployeeSkillLinkDao;
 import net.codejava.DAO.ExamRepository;
 import net.codejava.DAO.ScheduleRepository;
+import net.codejava.DAO.SkillsDao;
 import net.codejava.DAO.UpdateExam;
 import net.codejava.DAO.UserRepository;
 import net.codejava.DAO.enabledisable;
 import net.codejava.DAO.listexamRepository;
 import net.codejava.model.Buyer;
 import net.codejava.model.Checkout;
-import net.codejava.model.Coin;
+import net.codejava.model.Employee;
+import net.codejava.model.EmployeeSkillLink;
 import net.codejava.model.Exam;
 import net.codejava.model.Shedule;
 import net.codejava.model.User;
@@ -45,13 +52,20 @@ public class AppController {
 	@Autowired
 	MemberDao md;
 	
-	
-	@Autowired
-	private CoinRepository CoinRepo;
+	@Autowired 
+	EmployeeDao ed;
+	@Autowired 
+	SkillsDao sd;
+	@Autowired 
+	EmployeeSkillLinkDao eld;
 	
 	@Autowired
 	private BuyerRepository BuyerRepo;
 	
+	@Autowired
+	RrfDao rd;
+	@Autowired
+	RrfSkillLinkerDao rsd;
 
 	
 	@GetMapping("")
@@ -75,22 +89,10 @@ public class AppController {
 	
 
 	
-	@GetMapping("/up")
-	public ModelAndView updatebla(Model model)
-	{
-		List<Coin> listBuyers = CoinRepo.findAll();
-		model.addAttribute("listBuyers", listBuyers);
-		return new ModelAndView("buyy");
-	}
+
 	
 	
-	@GetMapping("/buyfg")
-	public ModelAndView listBuyers(Model model) {
-		List<Coin> listBuyers = CoinRepo.findAll();
-		model.addAttribute("listBuyers", listBuyers);
-		
-		return new ModelAndView("buy");
-	}
+
 	
 	
 	@GetMapping("/Coinregistration")
@@ -99,24 +101,9 @@ public class AppController {
 		
 		return new ModelAndView("CoinReg");
 	}
-	@PostMapping("/coin_registeration")
-	public ModelAndView CoinRegister(Coin Coin) {
-		
-		CoinRepo.save(Coin);
-		
-		return new ModelAndView("index");
-	}
+
 	
-	@GetMapping("/BuyerRegistration/cid={cid}")
-	public ModelAndView BuyerRegistration(Model model, @PathVariable("cid") int cid) {
-			
-		
-		    Coin c= CoinRepo.findByCoinId(cid);
-		    c.setBuy("Sold");
-		    CoinRepo.save(c);
-			
-			return new ModelAndView("BuyerRegistration");
-			}
+	
 		
 		@PostMapping("/buyer1")
 		public ModelAndView BuyerRegister(Buyer Buyer) {
@@ -223,8 +210,41 @@ public class AppController {
 			
 			return new ModelAndView("user");	}
 		
-		
-		
+		@GetMapping("/rrf")
+		public ModelAndView rrf(Model model) {
+			
+			
+			return new ModelAndView("rrf");	}
+		@GetMapping("/rrfprocess")
+		public ModelAndView rrfprocess(Model model, HttpServletRequest req) {
+			
+			int exp=Integer.parseInt(req.getParameter("exp"));
+			Rrf r=new Rrf();
+			r.setExperience(exp);
+			rd.save(r);
+			String s1=req.getParameter("vehicle1");
+			String s2=req.getParameter("vehicle2");
+			String s3=req.getParameter("vehicle3");
+			if(s1!=null) {
+				RrfSkillLinker link= new RrfSkillLinker();
+				link.setRrfno(r.getSno());
+				link.setSkillsno(1);
+				rsd.save(link);
+			}
+			if(s2!=null) {
+				RrfSkillLinker link= new RrfSkillLinker();
+				link.setRrfno(r.getSno());
+				link.setSkillsno(2);
+				rsd.save(link);
+			}
+			if(s3!=null) {
+				RrfSkillLinker link= new RrfSkillLinker();
+				link.setRrfno(r.getSno());
+				link.setSkillsno(3);
+				rsd.save(link);
+			}
+			return new ModelAndView("rrf");	
+			}
 		@GetMapping("/Checkout")
 		public ModelAndView view1() {
 			
@@ -343,7 +363,44 @@ public class AppController {
 		public ModelAndView view15() {
 		
 			
-			return new ModelAndView("Addlistexam");	
+			return new ModelAndView("employee");	
+			
+			}
+		@GetMapping("/employeeprocess")
+		public ModelAndView view155(HttpServletRequest req,Model model) {
+			String name= req.getParameter("empname");
+			int exp= Integer.parseInt(req.getParameter("exp"));
+			Employee e=new Employee();
+			
+			e.setName(name);
+			e.setExperience(exp);
+			ed.save(e);
+			
+		String l=req.getParameter("vehicle1");
+		String l1=req.getParameter("vehicle2");
+		String l2=req.getParameter("vehicle3");
+		
+			if(l!=null) {
+				EmployeeSkillLink link= new EmployeeSkillLink();
+				link.setEmpSno(e.getSno());
+				link.setSkillSno(1);
+				eld.save(link);
+			}
+			if(l1!=null) {
+				EmployeeSkillLink link= new EmployeeSkillLink();
+				link.setEmpSno(e.getSno());
+				link.setSkillSno(2);
+				eld.save(link);
+				
+			}
+			if(l2!=null) {
+				EmployeeSkillLink link= new EmployeeSkillLink();
+				link.setEmpSno(e.getSno());
+				link.setSkillSno(3);
+				eld.save(link);
+			}
+			
+			return new ModelAndView("employee");	
 			
 			}
 		@GetMapping("/javadetail")
