@@ -1,7 +1,9 @@
 package net.codejava.controller;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
-
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import net.codejava.model.Member;
@@ -364,6 +366,64 @@ public class AppController {
 		
 			
 			return new ModelAndView("employee");	
+			
+			}
+		
+		
+		/*to view the skills*/
+		
+		@GetMapping("/requirement")
+		public ModelAndView requirements(Model model) {
+			List<Integer> ids=eld.getAllid();
+			
+			List<String> li1 =new ArrayList<String>();
+			List<List> megalist=new ArrayList<List>();
+			
+			Set<Integer> s = new LinkedHashSet<Integer>(ids);  
+			System.out.print(s);
+			Integer arr[] = new Integer[s.size()];
+			s.toArray(arr);
+			
+			List<String> li=new ArrayList<String>();
+			 int n = s.size();
+			    List<Integer> aList = new ArrayList<Integer>(n);
+			    for (Integer x : s)
+			      aList.add(x);
+			    System.out.print(aList);
+			   
+			    
+			for(int i=0;i<s.size();i++) {
+			
+				 List<String> listnew = new ArrayList<String>(n);
+		 listnew =eld.retskillno(aList.get(i));
+		
+		
+		 
+		for(int j=0;j<listnew.size();j++) {
+			List<String> listnew1 = new ArrayList<String>(n);
+			;
+			if(Integer.parseInt(listnew.get(j))== 1) {
+				listnew1.add("cpp");
+			}
+			else if(Integer.parseInt(listnew.get(j))== 2) {
+				listnew1.add("java");
+			}
+			else {
+				listnew1.add("c");
+			}
+			megalist.add(listnew1);
+		}
+		System.out.print(megalist);
+		
+			
+			}
+			
+		
+		model.addAttribute("abc",megalist);
+		List<Employee> listemployee = ed.findAll();
+		model.addAttribute("listemployee", listemployee);
+			
+			return new ModelAndView("viewtest");	
 			
 			}
 		@GetMapping("/employeeprocess")

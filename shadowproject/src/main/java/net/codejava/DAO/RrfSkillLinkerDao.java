@@ -12,4 +12,6 @@ public interface RrfSkillLinkerDao extends JpaRepository<RrfSkillLinker, Long> {
 	public RrfSkillLinker findbysno(int sno);
 	@Query("SELECT e.skillsno FROM RrfSkillLinker e WHERE e.rrfno = ?1")
 	public List<String> retskillno(int empsno);
+	@Query("SELECT rrfno FROM RrfSkillLinker")
+	public List<Integer> getallid();
 }
