@@ -1,6 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    
+    <title >admin</title>
+</head>
+
+
+<!--    Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
+
+  
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav navbar-left"> 
+            <li class="nav-item "><a class="nav-link" th:href="@{/admin}">Back
+					<span class="sr-only">(current)</span>
+			</a></li></ul>
+        <ul class="navbar-nav ml-auto text-uppercase">
+
+            <li class="nav-item "><a class="nav-link" th:href="@{/}">HOME
+					<span class="sr-only">(current)</span>
+			</a></li>
+
+		<a href="#"><i sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="btn btn-primary add_cust">Logout</a></i> 
+        </ul>
+
+    </div>
+</nav>
+<!--    End of Navbar-->
+
+    <section class="banner d-flex justify-content-center align-items-center">
+        <div class="text-center"> 
+            <h1 class="font-weight-bold"><h3>See all Manager List</h3></h1>
+            <br>
+           
+	
+<h1>
+         <br><a href="Viewmanager"><button class="btn-lg text-white">Managers List</a></h1></button>
+<br> <a th:href="@{/listofexam}"><button class="btn-lg text-white">List Of clients</a><br></button><br>
+         <br><a href="Addlistexam"><button class="btn-lg text-white">Add Client</a></h5></button>
+         
 
 
 
+
+ 
+
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+<!-- <script th:src="@{/js/bootstrap.min.js}"></script> -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registration Success</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+		<h3>You have signed up successfully!</h3>
+		<h4><a th:href="@{/}">Back to Home Page</a></h4>
+	</div>
+	
+</body>
+</html> -->
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <title>Java</title>
@@ -17,7 +99,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </style>
 <body>
 
-<!-- Navbar -->
+Navbar
 <div class="w3-top">
   <div class="w3-bar w3-black w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
@@ -28,7 +110,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     
   </div>
 
-  <!-- Navbar on small screens -->
+  Navbar on small screens
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
@@ -38,14 +120,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   </div>
 </div>
 
-<!-- Header -->
+Header
 <header class="w3-container w3-indigo w3-center" style="padding:128px 16px">
   <p class="w3-margin w3-xlarge"><h1>Welcome to Manager portal</h1></p>
   <pre class="w3-xlarge"></pre></p>
   
 </header>
 
-<!-- First Grid -->
+First Grid
 <center><div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-twothird">
@@ -71,7 +153,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
 </div>
 
-<!-- Footer -->
+Footer
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
   <div class="w3-xlarge w3-padding-32">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -98,3 +180,329 @@ function myFunction() {
 
 </body>
 </html>
+ 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<title>Java</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+Navbar
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Certification</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Feedback</a>
+    
+  </div>
+
+  Navbar on small screens
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
+
+  </div>
+</div>
+
+Header
+<header class="w3-container w3-red w3-center" style="padding:150px 16px">
+  <p class="w3-margin w3-xlarge"><h1>Welcome to Admin portal</h1></p>
+  <pre class="w3-xlarge"></pre></p>
+  
+</header>
+
+First Grid
+<center><div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+
+  
+
+
+   <center> 
+         
+		<h3><a th:href="@{/register1}"><button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Register</button></a></h3>
+		<h3><a th:href="@{/login}"><button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Login</button></a></h3></center>
+</a><br></center>
+<br>
+     
+    </div>
+
+    
+  </div>
+</div>
+
+
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-0">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+</div>
+
+Footer
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>Shadow project-Resourse fulfillment</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
+ -->
+
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Sign Up</title>
+	
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <style type="text/css">
+
+  body {
+  background: url(https://cdn.statically.io/img/cdn.hipwallpaper.com/i/78/59/xUijhW.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  </style>
+<body>
+	<div class="container text-center">
+		<div>
+			<h1>Admin Registration </h1>
+		</div>
+		<form th:action="@{/process_register}" th:object="${user}" 
+			method="POST" style="max-width: 600px; margin: 0 auto;">
+		<div class="m-3">
+			<div class="form-group row">
+				<label class="col-4 col-form-label">E-mail: </label>
+				<div class="col-8">
+					<input type="email" th:field="*{email}" class="form-control" required />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Password: </label>
+				<div class="col-8">
+					<input type="password" th:field="*{password}" class="form-control" 
+							required minlength="6" maxlength="10"/>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">First Name: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{firstName}" class="form-control" 
+							required minlength="2" maxlength="20"/>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Last Name: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{lastName}" class="form-control" 
+							required minlength="2" maxlength="20" />
+				</div>
+			</div>
+			
+			<div>
+				<button type="submit" class="btn btn-primary">Sign Up</button> 
+			</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Registration</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+		<div>
+			<h1>Admin Registration </h1>
+		</div>
+		<form th:action="@{/process_register}" th:object="${user}" 
+			method="POST" style="max-width: 600px; margin: 0 auto;">
+		<div class="m-3">
+			<div class="form-group row">
+				<label class="col-4 col-form-label">E-mail: </label>
+				<div class="col-8">
+					<input type="email" th:field="*{email}" class="form-control" required />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Password: </label>
+				<div class="col-8">
+					<input type="password" th:field="*{password}" class="form-control" 
+							required minlength="6" maxlength="10"/>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">First Name: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{firstName}" class="form-control" 
+							required minlength="2" maxlength="20"/>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Last Name: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{lastName}" class="form-control" 
+							required minlength="2" maxlength="20" />
+				</div>
+			</div>
+			
+			<div>
+				<button type="submit" class="btn btn-primary">Sign Up</button> 
+			</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html> -->
+
+<!-- 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<title>Java</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+Navbar
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Skills</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Verified clients</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Certification</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Feedback</a>
+    
+  </div>
+
+  Navbar on small screens
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
+
+  </div>
+</div>
+
+Header
+<header class="w3-container w3-indigo w3-center" style="padding:128px 16px">
+  <p class="w3-margin w3-xlarge"><h1>Welcome to Manager portal</h1></p>
+  <pre class="w3-xlarge"></pre></p>
+  
+</header>
+
+First Grid
+<center><div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+
+  
+
+
+   <center> 
+         <br><a href="Viewmanager"><button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Managers List</a></h5></button>
+         
+</a><br></center>
+<br>
+     
+    </div>
+
+    
+  </div>
+</div>
+
+
+
+<div class="w3-container w3-indigo w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+</div>
+
+Footer
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>Shadow project-Resourse fulfillment</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
+ -->

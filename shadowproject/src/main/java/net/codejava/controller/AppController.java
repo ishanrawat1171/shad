@@ -7,8 +7,8 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import net.codejava.model.Member;
+import net.codejava.model.ProfileRrfLinker;
 import net.codejava.model.Rrf;
-import net.codejava.model.RrfSkillLinker;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -25,12 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.codejava.DAO.MemberDao;
+import net.codejava.DAO.ProfileRrfLinkerDao;
 import net.codejava.DAO.RrfDao;
-import net.codejava.DAO.RrfSkillLinkerDao;
+
 import net.codejava.DAO.BuyerRepository;
 import net.codejava.DAO.CheckoutRepository;
 import net.codejava.DAO.EmployeeDao;
-import net.codejava.DAO.EmployeeSkillLinkDao;
 import net.codejava.DAO.ExamRepository;
 import net.codejava.DAO.ScheduleRepository;
 import net.codejava.DAO.SkillsDao;
@@ -41,7 +41,6 @@ import net.codejava.DAO.listexamRepository;
 import net.codejava.model.Buyer;
 import net.codejava.model.Checkout;
 import net.codejava.model.Employee;
-import net.codejava.model.EmployeeSkillLink;
 import net.codejava.model.Exam;
 import net.codejava.model.Shedule;
 import net.codejava.model.User;
@@ -53,21 +52,21 @@ public class AppController {
 	
 	@Autowired
 	MemberDao md;
+	@Autowired
+	ProfileRrfLinkerDao prd;
 	
 	@Autowired 
 	EmployeeDao ed;
 	@Autowired 
 	SkillsDao sd;
-	@Autowired 
-	EmployeeSkillLinkDao eld;
+	
 	
 	@Autowired
 	private BuyerRepository BuyerRepo;
 	
 	@Autowired
 	RrfDao rd;
-	@Autowired
-	RrfSkillLinkerDao rsd;
+	private int rrfsno;
 
 	
 	@GetMapping("")
@@ -163,6 +162,7 @@ public class AppController {
 		}
 		@GetMapping("/login1")
 		public ModelAndView viewHomePage2() {
+			
 			return new ModelAndView ("login1") ;
 		}
 		
@@ -223,28 +223,11 @@ public class AppController {
 			int exp=Integer.parseInt(req.getParameter("exp"));
 			Rrf r=new Rrf();
 			r.setExperience(exp);
+			
+			String s1=req.getParameter("skills");
+			r.setSkills(s1);
 			rd.save(r);
-			String s1=req.getParameter("vehicle1");
-			String s2=req.getParameter("vehicle2");
-			String s3=req.getParameter("vehicle3");
-			if(s1!=null) {
-				RrfSkillLinker link= new RrfSkillLinker();
-				link.setRrfno(r.getSno());
-				link.setSkillsno(1);
-				rsd.save(link);
-			}
-			if(s2!=null) {
-				RrfSkillLinker link= new RrfSkillLinker();
-				link.setRrfno(r.getSno());
-				link.setSkillsno(2);
-				rsd.save(link);
-			}
-			if(s3!=null) {
-				RrfSkillLinker link= new RrfSkillLinker();
-				link.setRrfno(r.getSno());
-				link.setSkillsno(3);
-				rsd.save(link);
-			}
+			
 			return new ModelAndView("rrf");	
 			}
 		@GetMapping("/Checkout")
@@ -262,55 +245,6 @@ public class AppController {
 			return new ModelAndView("Success");
 		}
 		
-		@GetMapping("/java")
-		public ModelAndView view2() {
-			
-			
-			return new ModelAndView("java");
-		}
-		
-		@GetMapping("/c++")
-		public ModelAndView view3() {
-			
-			
-			return new ModelAndView("c++");
-		}
-		@GetMapping("/phps")
-		public ModelAndView view5() {
-			
-			
-			return new ModelAndView("phps");
-		}
-		@GetMapping("/springboot")
-		public ModelAndView view6() {
-			
-			
-			return new ModelAndView("springboot");
-		}
-
-		@GetMapping("/java1")
-			public ModelAndView view7() {
-				return new ModelAndView("java1");
-			}
-		@GetMapping("/SQL")
-		public ModelAndView view8() {
-			
-			
-			return new ModelAndView("SQL");
-		}
-		@GetMapping("/springboot1")
-		public ModelAndView view9() {
-			
-			
-			return new ModelAndView("springboot1");
-		}
-		@GetMapping("/BootStrap")
-		public ModelAndView view10() {
-			
-			
-			return new ModelAndView("BootStrap");
-		}
-	
 		
 		
 		
@@ -374,58 +308,41 @@ public class AppController {
 		
 		@GetMapping("/requirement")
 		public ModelAndView requirements(Model model) {
-			List<Integer> ids=eld.getAllid();
-			
-			List<String> li1 =new ArrayList<String>();
-			List<List> megalist=new ArrayList<List>();
-			
-			Set<Integer> s = new LinkedHashSet<Integer>(ids);  
-			System.out.print(s);
-			Integer arr[] = new Integer[s.size()];
-			s.toArray(arr);
-			
-			List<String> li=new ArrayList<String>();
-			 int n = s.size();
-			    List<Integer> aList = new ArrayList<Integer>(n);
-			    for (Integer x : s)
-			      aList.add(x);
-			    System.out.print(aList);
-			   
-			    
-			for(int i=0;i<s.size();i++) {
-			
-				 List<String> listnew = new ArrayList<String>(n);
-		 listnew =eld.retskillno(aList.get(i));
-		
-		
-		 
-		for(int j=0;j<listnew.size();j++) {
-			List<String> listnew1 = new ArrayList<String>(n);
-			;
-			if(Integer.parseInt(listnew.get(j))== 1) {
-				listnew1.add("cpp");
-			}
-			else if(Integer.parseInt(listnew.get(j))== 2) {
-				listnew1.add("java");
-			}
-			else {
-				listnew1.add("c");
-			}
-			megalist.add(listnew1);
-		}
-		System.out.print(megalist);
-		
-			
-			}
-			
-		
-		model.addAttribute("abc",megalist);
-		List<Employee> listemployee = ed.findAll();
-		model.addAttribute("listemployee", listemployee);
-			
+		List <Rrf> rf=rd.findAll();
+		model.addAttribute("rf",rf);
 			return new ModelAndView("viewtest");	
 			
 			}
+	/*TO link the profiles with rrf  *********************************************/
+		
+		
+		@GetMapping("/linking/{sno}")
+		public ModelAndView linking(@PathVariable(name = "sno") int sno, Model model) {
+			
+				
+			
+				rrfsno=sno;
+			System.out.print(rrfsno);
+			List<Employee>e=ed.findAll();
+			model.addAttribute("employee",e);
+			return new ModelAndView("linkviewprofile");	
+			
+			}
+		
+		/* *************************************************** */
+		@GetMapping("/linked/{sno}")
+		public ModelAndView linked(@PathVariable(name = "sno") int sno, Model model) {
+	
+	ProfileRrfLinker prl=new ProfileRrfLinker();
+	prl.setPrno(sno);
+	System.out.print(rrfsno);
+	prl.setRrfno(rrfsno);
+	prd.save(prl);
+			return new ModelAndView("linkviewprofile");	
+			
+			}
+	/* *********************************** */	
+		
 		@GetMapping("/employeeprocess")
 		public ModelAndView view155(HttpServletRequest req,Model model) {
 			String name= req.getParameter("empname");
@@ -434,31 +351,12 @@ public class AppController {
 			
 			e.setName(name);
 			e.setExperience(exp);
-			ed.save(e);
 			
-		String l=req.getParameter("vehicle1");
-		String l1=req.getParameter("vehicle2");
-		String l2=req.getParameter("vehicle3");
-		
-			if(l!=null) {
-				EmployeeSkillLink link= new EmployeeSkillLink();
-				link.setEmpSno(e.getSno());
-				link.setSkillSno(1);
-				eld.save(link);
-			}
-			if(l1!=null) {
-				EmployeeSkillLink link= new EmployeeSkillLink();
-				link.setEmpSno(e.getSno());
-				link.setSkillSno(2);
-				eld.save(link);
-				
-			}
-			if(l2!=null) {
-				EmployeeSkillLink link= new EmployeeSkillLink();
-				link.setEmpSno(e.getSno());
-				link.setSkillSno(3);
-				eld.save(link);
-			}
+			
+		String l=req.getParameter("skills");
+		e.setSkills(l);
+		ed.save(e);
+			
 			
 			return new ModelAndView("employee");	
 			
@@ -523,7 +421,13 @@ public class AppController {
 	 
 		 
 		 
-		
+		 @GetMapping("/viewEmployee")
+			public ModelAndView ViewSchedule1(Model model) {
+				List<Employee> emp = ed.findAll();
+				model.addAttribute("emp", emp);
+				
+				return new ModelAndView("ViewEmployee");	
+				}
 		 
 			@GetMapping("/ViewSchedule")
 			public ModelAndView ViewSchedule(Model model) {
@@ -541,7 +445,9 @@ public class AppController {
 				Member m=md.findByEmail(email);
 				System.out.println(m);
 				
-				
+				if(email.equals("ishanrawat71@yahoo.com") && pass.equals("1234567")) {
+					return new ModelAndView("java");
+				}
 				if(m !=null) {
 				
 					if(pass.equals(m.getPassword())) {

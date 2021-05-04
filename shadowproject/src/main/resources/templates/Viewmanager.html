@@ -1,4 +1,97 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    
+    <title >View Manager</title>
+</head>
+
+
+<!--    Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
+
+  
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav navbar-left"> 
+            <li class="nav-item "><a class="nav-link" th:href="@{/users}">Back
+					<span class="sr-only">(current)</span>
+			</a></li></ul>
+        <ul class="navbar-nav ml-auto text-uppercase">
+
+            <li class="nav-item "><a class="nav-link" th:href="@{/}">HOME
+					<span class="sr-only">(current)</span>
+			</a></li>
+<a href="#"><i sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="btn btn-primary add_cust">Logout</a></i> 
+
+        </ul>
+
+    </div>
+</nav>
+<!--    End of Navbar-->
+
+    <section class="banner d-flex justify-content-center align-items-center">
+        <div class="text-center"> <h1 class="font-weight-bold"><h3>Welcome</h3>
+        <br>
+        
+            <h1 class="font-weight-bold"><h3>List of Manager</h3>
+            <br>
+           
+	<div>
+		<table class= "table table-striped table-bordered table-hover table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th>Email</th>
+					<th>Mobile</th>
+					<th>Password</th>
+					<th>Username</th>
+					<th>Enable/Disable</th>
+				</tr>
+			
+			<tbody> 
+		
+				<tr th:each="viewmanager: ${listmanager}" Style = 'background: white'>
+					<td th:text="${viewmanager.email}">Exam code</td>
+					<td th:text="${viewmanager.mobile}">Exam Name</td>
+					<td th:text="${viewmanager.password}">Duration</td>
+					<td th:text="${viewmanager.userName}">Price</td>
+				<td><a th:href="@{/enabledisable/{email}(email = ${viewmanager.email})}">Enable/Disable</a></td>
+		
+					
+				</tr>
+				</h3>
+			</tbody>
+			
+		</table>
+	</div>
+
+         <!-- <br><a href="Viewmanager"><button class="btn-lg text-white">Managers List</a></h1></button> -->
+         
+
+
+
+
+ 
+
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+<!-- <script th:src="@{/js/bootstrap.min.js}"></script> -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
+<!-- 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -49,4 +142,4 @@
 </div>
 </body>
 </html>
-
+ -->

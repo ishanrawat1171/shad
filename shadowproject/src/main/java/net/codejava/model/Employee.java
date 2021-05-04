@@ -23,6 +23,14 @@ public class Employee {
 	 private String name;
 	
 	private int experience;
+private String skills;
+	public String getSkills() {
+	return skills;
+}
+
+public void setSkills(String skills) {
+	this.skills = skills;
+}
 
 	public int getSno() {
 		return sno;
@@ -50,16 +58,18 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [sno=" + sno + ", name=" + name + ", experience=" + experience + "]";
+		return "Employee [sno=" + sno + ", name=" + name + ", experience=" + experience + ", skills=" + skills + "]";
 	}
 
-	public Employee(int sno, String name, int experience) {
+	public Employee(int sno, String name, int experience, String skills) {
 		super();
 		this.sno = sno;
 		this.name = name;
 		this.experience = experience;
+		this.skills = skills;
 	}
-		
+
+
 	 
 		
 

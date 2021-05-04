@@ -11,6 +11,7 @@ public class Rrf {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int Sno;
 private int experience;
+private String skills;
 public int getSno() {
 	return Sno;
 }
@@ -23,18 +24,23 @@ public int getExperience() {
 public void setExperience(int experience) {
 	this.experience = experience;
 }
-@Override
-public String toString() {
-	return "Rrf [Sno=" + Sno + ", experience=" + experience + "]";
+public String getSkills() {
+	return skills;
 }
-public Rrf(int sno, int experience) {
+public void setSkills(String skills) {
+	this.skills = skills;
+}
+public Rrf(int sno, int experience, String skills) {
 	super();
 	Sno = sno;
 	this.experience = experience;
+	this.skills = skills;
 }
 public Rrf() {
 	super();
 	// TODO Auto-generated constructor stub
 }
+
+
 
 }

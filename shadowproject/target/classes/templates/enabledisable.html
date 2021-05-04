@@ -1,5 +1,77 @@
 
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    
+    <title >enabledisable</title>
+</head>
+
+
+<!--    Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
+
+  
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav navbar-left"> 
+            <li class="nav-item "><a class="nav-link" th:href="@{/Viewmanager}">Back
+					<span class="sr-only">(current)</span>
+			</a></li></ul>
+        <ul class="navbar-nav ml-auto text-uppercase">
+
+            <li class="nav-item "><a class="nav-link" th:href="@{/}">HOME
+					<span class="sr-only">(current)</span>
+			</a></li>
+			<a href="#"><i sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="btn btn-primary">Logout</a></i> 
+
+
+        </ul>
+
+    </div>
+</nav>
+        <form action="#" th:action="@{/save/{email}(email = ${mem.email})}" >
+<center>
+        <div class="text-center"> 
+            <h1 class="font-weight-bold-red"><h3>Select and Submit</h3></h1>
+            <br>
+            <br>
+	<input type="radio" id="enable" name="gender" value="enable">
+<label for="male">Enable</label><br><br>
+<input type="radio" id="disable" name="gender" value="disable">
+<label for="female">Disable</label><br>
+				
+			<br><button type="submit" class="btn btn-primary">Submit</button>
+			
+	
+        </form>
+        <!--  <br><a href="Viewmanager"><button class="btn btn-primary">Managers List</a></h1></button>
+          -->
+
+
+
+
+ 
+
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+<!-- <script th:src="@{/js/bootstrap.min.js}"></script> -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -24,12 +96,8 @@
 				
 			<br><button type="submit" class="btn btn-primary">Submit</button>
 			
-			
-				
-			
-				
-				
+	
         </form>
     </div>
 </body>
-</html>
+</html> -->

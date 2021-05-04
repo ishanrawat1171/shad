@@ -1,4 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    
+    <title th:text="${title}">Manager Signup</title>
+</head>
+
+
+<!--    Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
+
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+       <ul class="navbar-nav navbar-left"> 
+            <li class="nav-item "><a class="nav-link" th:href="@{/managerhome}">Back
+					<span class="sr-only">(current)</span>
+			</a></li></ul>
+			           <ul class="navbar-nav ml-auto text-uppercase">
+			            <li class="nav-item "><a class="nav-link" th:href="@{/}">HOME
+					<span class="sr-only">(current)</span>
+			</a></li>
+			
+
+
+
+        </ul>
+
+    </div>
+</nav>
+<!--    End of Navbar-->
+
+    <section class="banner d-flex justify-content-center align-items-center">
+        <div class="text-center"> 
+  
+			<h3 style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manager Registration - Sign Up</h3>
+		<br><br>
+		<form th:action="@{/process_register1}" th:object="${user}" 
+			method="post" style="max-width: 400px; margin: 0 auto;">
+		<div class="m-3">
+			<div class="form-group row">
+				<label style="color:white;" class="col-4 col-form-label">E-mail: </label>
+				<div class="col-8">
+					<input type="email" th:field="*{email}" style="width:300px;margin-left:170px;" class="form-control" required />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label style="color:white;" class="col-4 col-form-label">Password: </label>
+				<div class="col-8">
+					<input type="password" th:field="*{password}" style="width:300px;margin-left:170px;" class="form-control" 
+							required minlength="6" maxlength="10"/>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label style="color:white;" class="col-4 col-form-label">Mobile number </label>
+				<div class="col-8">
+					<input type="text" th:field="*{firstName}" style="width:300px;margin-left:170px;" class="form-control" 
+							required minlength="2" maxlength="20"/>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label style="color:white; " class="col-4 col-form-label">User name </label>
+				<div class="col-8">
+					<input type="text" th:field="*{lastName}" style="width:300px;margin-left:170px;" class="form-control" 
+							required minlength="2" maxlength="20" />
+				</div>
+			</div>
+			
+			<div>
+				<button type="submit" class="btn btn-primary">Sign Up</button> 
+			</div>
+		</div>
+		</form>
+       
+    </section>
+    <center><div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+
+  
+
+
+ 
+
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+<!-- <script th:src="@{/js/bootstrap.min.js}"></script> -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
@@ -69,4 +176,4 @@
 		</form>
 	</div>
 </body>
-</html>
+</html> -->

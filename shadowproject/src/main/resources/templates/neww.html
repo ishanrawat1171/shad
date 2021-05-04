@@ -1,4 +1,96 @@
-<!DOCTYPE html>
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    
+    <title th:text="${title}">Manager/Employee</title>
+</head>
+
+
+<!--    Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
+
+    <a class="navbar-brand" href="#">L&T Technology Services Limited</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ml-auto text-uppercase">
+
+       
+<li class="nav-item "><a class="nav-link" th:href="@{/Addlistexam}">Add Employee
+					<span class="sr-only">(current)</span>
+			</a></li><li class="nav-item "><a class="nav-link" th:href="@{/requirement}">View Requirement
+					<span class="sr-only">(current)</span>
+			</a></li><li class="nav-item "><a class="nav-link" th:href="@{/rrf}">Generate RRF
+					<span class="sr-only">(current)</span>
+			</a></li>
+
+     <li class="nav-item "><a class="nav-link" th:href="@{/}">HOME
+					<span class="sr-only">(current)</span>
+			</a></li>
+			<a href="#"><i sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="btn btn-primary add_cust">Logout</a></i> 
+
+        </ul>
+  <!--         <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>L&T</b> Technology services</a>
+    Float links to the right. Hide them on small screens
+    <div class="w3-right w3-hide-small">
+      <a href="\Addlistexam" class="w3-bar-item w3-button">Add employee</a>
+      <a href="\requirement" class="w3-bar-item w3-button">View Requirements</a>
+      <a href="\rrf" class="w3-bar-item w3-button">Genrate RRF</a>
+    </div>
+  </div>
+</div>
+
+    </div> -->
+</nav>
+<!--    End of Navbar-->
+
+    <section class="banner d-flex justify-content-center align-items-center">
+        <div class="text-center"> 
+           
+            <br>
+           	<br>
+           	  <center> 
+         
+	
+     
+    </div>
+            
+          <!--   <button class="btn bg-primary btn-lg text-white" href="#" th:href="@{/admin}">Get Start</button>
+            
+        </div> -->
+       
+    </section>
+    <center><div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+
+  
+
+
+ 
+
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+<!-- <script th:src="@{/js/bootstrap.min.js}"></script> -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
@@ -26,7 +118,7 @@ body {font-family: "Lato", sans-serif;background: url(https://i0.wp.com/www.eart
 <div class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
     <a href="#home" class="w3-bar-item w3-button"><b>L&T</b> Technology services</a>
-    <!-- Float links to the right. Hide them on small screens -->
+    Float links to the right. Hide them on small screens
     <div class="w3-right w3-hide-small">
       <a href="\Addlistexam" class="w3-bar-item w3-button">Add employee</a>
       <a href="\requirement" class="w3-bar-item w3-button">View Requirements</a>
@@ -52,4 +144,4 @@ center><div class="w3-row-padding w3-padding-64 w3-container">
 
 
 </body>
-</html>
+</html> -->
