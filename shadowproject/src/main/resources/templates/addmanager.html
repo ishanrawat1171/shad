@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 
@@ -10,7 +11,7 @@
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} " />
     <link th:rel="stylesheet" th:href="@{/css/style.css}" />
     
-
+    <title th:text="${title}">Manager Signup</title>
 </head>
 
 
@@ -26,11 +27,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
        <ul class="navbar-nav navbar-left"> 
-            <li class="nav-item "><a class="nav-link" th:href="@{/checkuser?lemail=ishanrawat59%40gmail.com&lpass=1234567}">Back
+            <li class="nav-item "><a class="nav-link" th:href="@{/admin}">Back
 					<span class="sr-only">(current)</span>
 			</a></li></ul>
 			           <ul class="navbar-nav ml-auto text-uppercase">
-			            <li class="nav-item"><a class="nav-link" th:href="@{/}">HOME
+			            <li class="nav-item "><a class="nav-link" th:href="@{/}">HOME
 					<span class="sr-only">(current)</span>
 			</a></li>
 			
@@ -42,28 +43,30 @@
     </div>
 </nav>
 <!--    End of Navbar-->
-<h1 style="text-align: center;"> Generate RRF</h1>
+
     <section class="banner d-flex justify-content-center align-items-center">
- 	
- <form action="/rrfprocess" style="text-align: center;">
-      Experience <input type="number" name="exp" >
-     <br><br>
-	&nbsp;&nbsp;  
-	   Skills  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="skills">
-    </div>
-    <br><br>
-    
-    </center>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="submit">
+        <div class="text-center"> 
+        
+        
+            
+	
+           
+      
+      	
+		<div>
+			<h1>Manager Registration </h1>
+			<br>
+		</div>
+<form th:action="@{/process_register1}" th:object="${user}" 
+			method="POST" style="max-width: 600px; margin: 0 auto;">
+
+Email : <input type="email" name="email"><br><br>
+Password: <input type="text" name="password"><br><br>
+
+
+<div>
+				<button type="submit" class="btn btn-primary">Sign Up</button> 
+			</div>
 </form>
-
-
-<script th:src="@{/js/script.js}"></script>
-<script th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>
-<!-- <script th:src="@{/js/bootstrap.min.js}"></script> -->
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-
 </body>
-
 </html>

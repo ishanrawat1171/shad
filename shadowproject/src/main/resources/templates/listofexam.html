@@ -25,7 +25,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <ul class="navbar-nav navbar-left"> 
-            <li class="nav-item "><a class="nav-link" th:href="@{/users}">Back
+            <li class="nav-item "><a class="nav-link" th:href="@{/checkuser?lemail=ishanrawat71%40yahoo.com&lpass=1234567}">Back
 					<span class="sr-only">(current)</span>
 			</a></li></ul>
         <ul class="navbar-nav ml-auto text-uppercase">
@@ -45,7 +45,7 @@
         <div class="text-center"> <h1 class="font-weight-bold"><h3>Welcome</h3>
         <br>
         
-            <h1 class="font-weight-bold"><h3>List of Manager</h3>
+            <h1 class="font-weight-bold"><h3>List of Clients</h3>
             <br>
            
 	<div>
@@ -54,21 +54,22 @@
 				<tr>
 					<th>Registered Id</th>
 					<th>Name</th>
-					<th>Phone number</th>
-					<th>Ps no</th>
-					<th>Rating(out of 5)</th>
-					<th>Update</th>
+					
+					<th>Email</th>
+					<th> Update</th>
+					
+					
 						
 				</tr>
 			
 			<tbody> 
 		
 				<tr th:each="listofexam: ${listexam}" Style = 'background: white'>
-					<td th:text="${listofexam.examcode}">Exam code</td>
-					<td th:text="${listofexam.examname}">Exam Name</td>
-					<td th:text="${listofexam.duration}">Duration</td>
-					<td th:text="${listofexam.price}">Price</td>
-					<td th:text="${listofexam.pscore}">Passing score</td>
+					<td th:text="${listofexam.clientid}">Duration</td>
+					<td th:text="${listofexam.clientName}">Exam code</td>
+					<td th:text="${listofexam.email}">Exam Name</td>
+					
+					
 			
 					<td><a th:href="@{/Updatedetails}">UPDATE DETAILS</a></td>		
 				

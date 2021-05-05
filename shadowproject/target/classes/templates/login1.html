@@ -161,9 +161,7 @@ span.psw {
 <br>
 
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Click here for Manager Login</button>
 
-<div id="id01" class="modal">
   
   <form class="modal-content animate" action="checkuser" >
     <div class="imgcontainer">
@@ -186,15 +184,13 @@ span.psw {
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <a th:href="@{/addmanager}"><button type="button"  class="cancelbtn">Register</button>
      
     </div>
   </form>
-</div>
 
 <script>
-// Get the modal
-var modal = document.getElementById('id01');
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {

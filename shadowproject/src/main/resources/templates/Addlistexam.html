@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
        <ul class="navbar-nav navbar-left"> 
-            <li class="nav-item "><a class="nav-link" th:href="@{/java}">Back
+            <li class="nav-item "><a class="nav-link" th:href="@{checkuser?lemail=ishanrawat71%40yahoo.com&lpass=1234567}">Back
 					<span class="sr-only">(current)</span>
 			</a></li></ul>
 			           <ul class="navbar-nav ml-auto text-uppercase">
@@ -48,7 +48,7 @@
 		<div>
 			<h1>Add client</h1>
 		</div>
-		<form th:action="@{/success3}" th:object="${listofexam}" 
+		<form th:action="@{/exam_register}" th:object="${listofexam}" 
 			method="post" style="max-width: 600px; margin: 0 auto;">
 		<div class="m-3">
 			<div class="form-group row">

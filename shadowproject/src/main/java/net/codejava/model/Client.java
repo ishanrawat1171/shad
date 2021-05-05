@@ -1,7 +1,8 @@
 package net.codejava.model;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
-
+@Entity
 public class Client {
 	
 	private String clientName;

@@ -67,6 +67,7 @@
 					<th>Experience</th>
 					<th>Skill Required</th>
 					<th > Link with Profiles</th>
+					<th >Update</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -76,6 +77,8 @@
 					<td th:text="${viewemployee.experience}">experience</td>
 					<td th:text="${viewemployee.skills}">skills</td>
 					<td><a th:href="@{/linking/{sno}(sno = ${viewemployee.getSno()})}">link</td>
+					
+					<td><a th:href="@{/updaterrf}">Update details</a></td>
 					
 				</p>
 				

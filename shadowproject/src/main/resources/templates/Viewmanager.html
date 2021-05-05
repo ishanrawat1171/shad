@@ -25,7 +25,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
    <ul class="navbar-nav navbar-left"> 
-            <li class="nav-item "><a class="nav-link" th:href="@{/users}">Back
+            <li class="nav-item "><a class="nav-link" th:href="@{/checkuser?lemail=ishanrawat71%40yahoo.com&lpass=1234567}">Back
 					<span class="sr-only">(current)</span>
 			</a></li></ul>
         <ul class="navbar-nav ml-auto text-uppercase">
@@ -53,9 +53,9 @@
 			<thead class="thead-dark">
 				<tr>
 					<th>Email</th>
-					<th>Mobile</th>
+					
 					<th>Password</th>
-					<th>Username</th>
+					
 					<th>Enable/Disable</th>
 				</tr>
 			
@@ -63,9 +63,9 @@
 		
 				<tr th:each="viewmanager: ${listmanager}" Style = 'background: white'>
 					<td th:text="${viewmanager.email}">Exam code</td>
-					<td th:text="${viewmanager.mobile}">Exam Name</td>
+					
 					<td th:text="${viewmanager.password}">Duration</td>
-					<td th:text="${viewmanager.userName}">Price</td>
+					
 				<td><a th:href="@{/enabledisable/{email}(email = ${viewmanager.email})}">Enable/Disable</a></td>
 		
 					

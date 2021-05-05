@@ -30,6 +30,7 @@ import net.codejava.DAO.RrfDao;
 
 import net.codejava.DAO.BuyerRepository;
 import net.codejava.DAO.CheckoutRepository;
+import net.codejava.DAO.ClientDao;
 import net.codejava.DAO.EmployeeDao;
 import net.codejava.DAO.ExamRepository;
 import net.codejava.DAO.ScheduleRepository;
@@ -40,6 +41,7 @@ import net.codejava.DAO.enabledisable;
 import net.codejava.DAO.listexamRepository;
 import net.codejava.model.Buyer;
 import net.codejava.model.Checkout;
+import net.codejava.model.Client;
 import net.codejava.model.Employee;
 import net.codejava.model.Exam;
 import net.codejava.model.Shedule;
@@ -59,7 +61,8 @@ public class AppController {
 	EmployeeDao ed;
 	@Autowired 
 	SkillsDao sd;
-	
+	@Autowired
+	ClientDao cd;
 	
 	@Autowired
 	private BuyerRepository BuyerRepo;
@@ -71,7 +74,7 @@ public class AppController {
 	
 	@GetMapping("")
 	public ModelAndView viewHomePage() {
-		return new ModelAndView("index");
+		return new ModelAndView("index1");
 	}
 
 	@GetMapping("/register")
@@ -129,6 +132,10 @@ public class AppController {
 		
 		@Autowired
 		private UpdateExam UpdateRepo;
+		
+		@Autowired
+		private RrfDao UpdateRrf;
+
 		
 		
 		@Autowired
@@ -189,7 +196,7 @@ public class AppController {
 			
 			memRepo.save(mem);
 			
-			return new ModelAndView( "register_success");
+			return new ModelAndView( "login1");
 		}
 		
 		@GetMapping("/users")
@@ -272,11 +279,16 @@ public class AppController {
 		
 		@GetMapping("/listofexam")
 		public ModelAndView listexam(Model model) {
-			List<listofexam> listexam = liRepo.findAll();
+			List<Client> listexam = cd.findAll();
 			model.addAttribute("listexam", listexam);
 			
 			return new ModelAndView("listofexam");	
 			}
+		@GetMapping("/addmanager")
+		public ModelAndView addmanager(Model model) {
+		return new ModelAndView("addmanager");	
+			}
+
 		
 		@GetMapping("/Viewmanager")
 		public ModelAndView listmanager(Model model) {
@@ -293,7 +305,18 @@ public class AppController {
 			
 			return new ModelAndView("Success");
 		}
-		
+		@PostMapping("/newreg")
+		public ModelAndView examRegister1(HttpServletRequest req) {
+			int id=Integer.parseInt(req.getParameter("examcode"));
+			String email=req.getParameter("duration");
+			String name=req.getParameter("examname");
+			Client c= new Client();
+			c.setClientName(name);
+			c.setEmail(email);
+			c.setClientid(id);
+			cd.save(c);
+			return new ModelAndView("Success");
+		}
 
 		@GetMapping("/Addlistexam")
 		public ModelAndView view15() {
@@ -302,6 +325,21 @@ public class AppController {
 			return new ModelAndView("employee");	
 			
 			}
+		
+		
+		@GetMapping("/client")
+		public ModelAndView client() {
+		
+			
+			return new ModelAndView("client");	
+			
+			}
+		
+		
+		
+		
+		
+		
 		
 		
 		/*to view the skills*/
@@ -377,9 +415,17 @@ public class AppController {
 	         return mav;
 	     }
 	     
-		 @RequestMapping(value = "/save", method = RequestMethod.POST)
-	     public ModelAndView saveProduct(@ModelAttribute("product") listofexam lie) {
-			 UpdateRepo.save(lie);
+		 @RequestMapping(value = "/save")
+	     public ModelAndView saveProduct(HttpServletRequest req) {
+			 int id=Integer.parseInt(req.getParameter("examcode"));
+			 String email=req.getParameter("duration");
+			 String name=req.getParameter("examname");
+			 Client c=new Client();
+			 c.setClientid(id);
+			 c.setClientName(name);
+			 c.setEmail(email);
+			 cd.save(c);
+			 
 	          
 	         return new ModelAndView("redirect:/listofexam");
 	     }
@@ -390,6 +436,26 @@ public class AppController {
 				
 				return new ModelAndView("Updatedetails");	
 				}
+		 
+		 
+		 
+		 @RequestMapping(value = "/save2", method = RequestMethod.POST)
+	     public ModelAndView saveProduct6(@ModelAttribute("product") Rrf lia) {
+			 UpdateRrf.save(lia);
+	          
+	         return new ModelAndView("viewtest");
+	     }
+
+		 @GetMapping("/updaterrf")
+			public ModelAndView view96() {
+			
+				
+				return new ModelAndView("updaterrf");	
+				}
+		 
+		 
+		 
+		 
 		 
 		 @GetMapping("/enabledisable/{email}")
 			public ModelAndView singlePathVariable(@PathVariable("email") String email, Model model) {
