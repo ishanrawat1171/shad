@@ -21,8 +21,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.codejava.DAO.MemberDao;
 import net.codejava.DAO.ProfileRrfLinkerDao;
@@ -47,6 +51,8 @@ import net.codejava.model.Exam;
 import net.codejava.model.Shedule;
 import net.codejava.model.User;
 import net.codejava.model.listofexam;
+import net.codejava.model.skills;
+import net.codejava.services.FileService;
 import net.codejava.services.Updateservice;
 
 @RestController
@@ -59,16 +65,20 @@ public class AppController {
 	
 	@Autowired 
 	EmployeeDao ed;
-	@Autowired 
-	SkillsDao sd;
+	
 	@Autowired
 	ClientDao cd;
 	
 	@Autowired
 	private BuyerRepository BuyerRepo;
+	@Autowired
+	private FileService fileService;
 	
 	@Autowired
 	RrfDao rd;
+
+	@Autowired
+	SkillsDao skd;
 	private int rrfsno;
 
 	
@@ -319,9 +329,10 @@ public class AppController {
 		}
 
 		@GetMapping("/Addlistexam")
-		public ModelAndView view15() {
-		
-			
+		public ModelAndView view15(Model model) {
+		List<skills> s=skd.findAll();
+			model.addAttribute("yes",s);
+		model.addAttribute("new","nde");
 			return new ModelAndView("employee");	
 			
 			}
@@ -334,7 +345,16 @@ public class AppController {
 			return new ModelAndView("client");	
 			
 			}
-		
+		 @PostMapping("/uploadFile")
+		    public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+		        fileService.uploadFile(file);
+
+		        redirectAttributes.addFlashAttribute("message",
+		            "You successfully uploaded " + file.getOriginalFilename() + "!");
+
+		        return "redirect:/";
+		    }
 		
 		
 		
@@ -556,6 +576,21 @@ public class AppController {
 				mv=new ModelAndView("Success");
 			
 				return mv;
+			}
+			String firstThreeCharacters;
+			
+			@RequestMapping(value="/skillnameautocomplete")
+			@ResponseBody
+			public List<String> skillnameautocomplete(@RequestParam(value="term", required = false, defaultValue="") String term){
+				List<String> suggestions= new ArrayList<String>();
+				List<skills>sk=skd.findAll();
+				for(skills s : sk) {
+					if(s.getSkill().contains(term))
+					suggestions.add(s.getSkill());
+				}
+				
+				return suggestions;
+				
 			}
 			
 		

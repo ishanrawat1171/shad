@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
 public class skills {
+public skills() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 private String skill;
 @Id
 private String sno;
