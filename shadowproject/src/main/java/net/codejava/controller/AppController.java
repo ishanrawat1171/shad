@@ -81,7 +81,7 @@ public class AppController {
 	SkillsDao skd;
 	private int rrfsno;
 
-	
+	List<String> suggestions1= new ArrayList<String>();
 	@GetMapping("")
 	public ModelAndView viewHomePage() {
 		return new ModelAndView("index1");
@@ -583,15 +583,42 @@ public class AppController {
 			@ResponseBody
 			public List<String> skillnameautocomplete(@RequestParam(value="term", required = false, defaultValue="") String term){
 				List<String> suggestions= new ArrayList<String>();
+				
 				List<skills>sk=skd.findAll();
+				String[] arrOfStr=term.split(",", -2);
+				int len=arrOfStr.length;
+				
+				System.out.println(arrOfStr);
+				String term1=arrOfStr[len-1];
+				System.out.print(term1);
+				String term3="";
+				int count=0;
+			
+				
 				for(skills s : sk) {
-					if(s.getSkill().contains(term))
+					for(String newstr : arrOfStr) {
+						count=0;
+						term3="";
+						while(count!=len-1) {
+							term3=term3+newstr+",";
+							count++;
+						}
+			
+					}
+					if(s.getSkill().contains(term1))
+						
+						
 					suggestions.add(s.getSkill());
+						
+							
+					
 				}
 				
 				return suggestions;
 				
 			}
+			
+		
 			
 		
 }
