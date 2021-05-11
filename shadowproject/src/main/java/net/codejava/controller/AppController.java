@@ -450,18 +450,22 @@ public class AppController {
 	         return new ModelAndView("redirect:/listofexam");
 	     }
 
-		 @GetMapping("/Updatedetails")
-			public ModelAndView view18() {
+		 @GetMapping("/Updatedetails/{email}")
+			public ModelAndView view18(@PathVariable(name = "email") String email, Model model) {
+			Client c=new Client();
+			c=cd.findByEmail(email);
 			
-				
+					model.addAttribute("c",c);
 				return new ModelAndView("Updatedetails");	
 				}
 		 
 		 
 		 
 		 @RequestMapping(value = "/save2", method = RequestMethod.POST)
-	     public ModelAndView saveProduct6(@ModelAttribute("product") Rrf lia) {
+	     public ModelAndView saveProduct6(@ModelAttribute("product") Rrf lia,Model model) {
 			 UpdateRrf.save(lia);
+				List <Rrf> rf=rd.findAll();
+				model.addAttribute("rf",rf);
 	          
 	         return new ModelAndView("viewtest");
 	     }

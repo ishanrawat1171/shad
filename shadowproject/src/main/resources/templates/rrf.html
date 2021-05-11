@@ -1,17 +1,45 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 
-<head>
-    <!-- Required meta tags -->
+   <meta charset="UTF-8">
+  
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} " />
     <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    <script th:inline="javascript">
     
+$(function(){
 
+	
+	$("#plant").autocomplete({
+		source: "skillnameautocomplete" ,
+				minlength: 1,
+				select: function(event, ui) {
+					this.value = ui.item.label;
+					$("#Plant_ID").val(ui.item.value);
+					return false;
+				}
+	});
+	});
+ 
+    
+    </script>
+
+ 
+
+<script src="/js/script.js"></script>
 </head>
+
 
 
 <!--    Navbar-->
@@ -49,7 +77,7 @@
       Experience <input type="number" name="exp" >
      <br><br>
 	&nbsp;&nbsp;  
-	   Skills  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="skills">
+	   Skills  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="skills" id="plant">
     </div>
     <br><br>
     
