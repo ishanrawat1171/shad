@@ -466,10 +466,12 @@ public class AppController {
 	         return new ModelAndView("viewtest");
 	     }
 
-		 @GetMapping("/updaterrf")
-			public ModelAndView view96() {
-			
-				
+		 @GetMapping("/updaterrf/{sno}")
+			public ModelAndView view96(@PathVariable(name = "sno") int sno, Model model) {
+			Rrf emp=new Rrf();
+			System.out.print(sno);
+			 emp=rd.findById(sno);
+			 model.addAttribute("emp",emp);
 				return new ModelAndView("updaterrf");	
 				}
 		 
@@ -585,31 +587,19 @@ public class AppController {
 				List<String> suggestions= new ArrayList<String>();
 				
 				List<skills>sk=skd.findAll();
-				String[] arrOfStr=term.split(",", -2);
-				int len=arrOfStr.length;
-				
-				System.out.println(arrOfStr);
-				String term1=arrOfStr[len-1];
-				System.out.print(term1);
-				String term3="";
+			
 				int count=0;
 			
-				
+				String newstring="";
+				//System.out.print(term);
+
 				for(skills s : sk) {
-					for(String newstr : arrOfStr) {
-						count=0;
-						term3="";
-						while(count!=len-1) {
-							term3=term3+newstr+",";
-							count++;
-						}
-			
-					}
-					if(s.getSkill().contains(term1))
-						
+					
+					if(s.getSkill().contains(term)) {
+					
 						
 					suggestions.add(s.getSkill());
-						
+					}
 							
 					
 				}

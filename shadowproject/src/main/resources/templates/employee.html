@@ -25,7 +25,12 @@ $(function(){
 	
 	$("#plant").autocomplete({
 		source: "skillnameautocomplete" ,
-				minlength: 1
+				minlength: 1,
+				select: function(event, ui) {
+					this.value = ui.item.label;
+					$("#Plant_ID").val(ui.item.value);
+					return false;
+				}
 	});
 	});
  
@@ -87,11 +92,10 @@ $(function(){
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >Skills</label>
 	
 				
-					<input type="text" name="skills"  id="plant" placeholder="Enter skills"  >
-					<br><br>
-					
-<br>
+				
 
+<input type="text" name="skills"  id="plant" placeholder="Enter skills"  >
+<br><br>
    
 	
    
@@ -110,7 +114,21 @@ $(function(){
   </div>
    
 </form></div>
+    <script >
+    function myFunction() {
+static var skills=[];
+var skill=document.getElementById("plant").innerHTML;
+skills.push(skill);
+document.getElementById("plant").innerHTML="";
+console.log(skills);
 
+}
+    </script>
+
+
+					
+					
+					<br><br>
     <div class="w3-container">
      
       <div class="w3-row">

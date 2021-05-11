@@ -78,7 +78,7 @@
 					<td th:text="${viewemployee.skills}">skills</td>
 					<td><a th:href="@{/linking/{sno}(sno = ${viewemployee.getSno()})}">link</td>
 					
-					<td><a th:href="@{/updaterrf}">Update details</a></td>
+					<td><a th:href="@{/updaterrf/{sno}(sno = ${viewemployee.getSno()})}">Update details</a></td>
 					
 				</p>
 				

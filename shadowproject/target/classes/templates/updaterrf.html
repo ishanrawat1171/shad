@@ -49,10 +49,10 @@
 			method="post" style="max-width: 600px; margin: 0 auto;">
 		<div class="m-3">
 			<div class="form-group row">
-				<label class="col-4 col-form-label">S no</label>
+				<label class="col-4 col-form-label" >S no</label>
 				
 				<div class="col-8">
-					<input type="number" name="Sno" class="form-control" />
+					<input type="number" name="Sno" class="form-control" th:placeholder="${emp.Sno}"/>
 				</div>
 			</div>
 			
@@ -60,14 +60,14 @@
 				<label class="col-4 col-form-label">Experience</label>
 				<div class="col-8">
 					<input type="number" name="experience" class="form-control" 
-							 />
+							th:placeholder="${emp.experience}" />
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-4 col-form-label">Skills</label>
 				<div class="col-8">
-					<input type="text" name="skills" class="form-control" 
+					<input type="text" name="skills" class="form-control" th:placeholder="${emp.skills}"
 							/>
 				</div>
 			</div>
