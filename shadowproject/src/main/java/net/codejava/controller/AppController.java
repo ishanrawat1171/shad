@@ -411,7 +411,7 @@ public class AppController {
 			e.setExperience(exp);
 			
 			
-		String l=req.getParameter("skills");
+		String l=req.getParameter("added");
 		e.setSkills(l);
 		ed.save(e);
 			
