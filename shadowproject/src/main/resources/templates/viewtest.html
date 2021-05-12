@@ -43,38 +43,31 @@
 
     <section class="banner d-flex justify-content-center align-items-center">
      <div >
-        <br>
-        
-            <h1 class="font-weight-bold"><h3>List of RRF</h3>
-            <br>
-           
-	
-	
+          <center>  <h1 class="font-weight-bold"><h1>List of RRF</h1></h1></center>
+   <br>
+
 	<div class="container text-center">
-	<div>
-		<form>
-		
-		</form>
-	</div>
-	
+
+
+				</td>
 	
 	<div>
-		<table class="table table-striped table-bordered" style="background-color: white;">
+<table class="table table-striped table-bordered" style= "width:1200px; border: 50px; background-color: white; ">
 			<thead class="thead-dark">
-				<tr>
-					<th>S no.</th>
+				<tr height="90">
+					<th><h2>S no.</th>
 					
-					<th>Experience</th>
-					<th>Skill Required</th>
-					<th > Link with Profiles</th>
-					<th >Update</th>
+					<th><h2>Experience</th>
+					<th><h2>Skill Required</th>
+					<th > <h2>Link with Profiles</th>
+					<th ><h2>Update</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="viewemployee: ${rf}">
 					<td th:text="${viewemployee.sno}"> code</td>
 					
-					<td th:text="${viewemployee.experience}">experience</td>
+					<td height="90" th:text="${viewemployee.experience}">experience</td>
 					<td th:text="${viewemployee.skills}">skills</td>
 					<td><a th:href="@{/linking/{sno}(sno = ${viewemployee.getSno()})}">link</td>
 					
