@@ -1,5 +1,7 @@
 package net.codejava.controller;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -236,12 +238,13 @@ public class AppController {
 			return new ModelAndView("rrf");	}
 		@GetMapping("/rrfprocess")
 		public ModelAndView rrfprocess(Model model, HttpServletRequest req) {
-			
+			int rrfno;
+			rrfno=Integer.parseInt(req.getParameter("rrfno"));
 			int exp=Integer.parseInt(req.getParameter("exp"));
 			Rrf r=new Rrf();
 			r.setExperience(exp);
-			
-			String s1=req.getParameter("skills");
+			r.setSno(rrfno);
+			String s1=req.getParameter("added");
 			r.setSkills(s1);
 			rd.save(r);
 			
@@ -414,7 +417,9 @@ public class AppController {
 		String l=req.getParameter("added");
 		e.setSkills(l);
 		ed.save(e);
-			
+	
+
+       
 			
 			return new ModelAndView("employee");	
 			

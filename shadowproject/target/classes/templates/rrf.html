@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 
+<head>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    <meta charset="UTF-8">
   
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -31,15 +33,27 @@ $(function(){
 				}
 	});
 	});
- 
+
     
     </script>
 
+		 <script th:inline="javascript">
+  function myFunction() {
+	
+		 var x=document.getElementById('plant').value;
+		
+		if(document.getElementById('add').value!='')
+		 x=x+","+document.getElementById('add').value
+ 
+ document.getElementById('plant').value='' ; 
+ document.getElementById('add').value=x ;
+
+ }
+  </script>
  
 
 <script src="/js/script.js"></script>
 </head>
-
 
 
 <!--    Navbar-->
@@ -74,12 +88,20 @@ $(function(){
     <section class="banner d-flex justify-content-center align-items-center">
  	
  <form action="/rrfprocess" style="text-align: center;">
+ 	Enter RrfNo <input type="number" name="rrfno">
+ 	<br>
+ 	
       Experience <input type="number" name="exp" >
      <br><br>
-	&nbsp;&nbsp;  
-	   Skills  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="skills" id="plant">
-    </div>
-    <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <label> Enter skills</label>
+	<input type="text" name="skills"  id="plant" placeholder="Enter skills"  >
+<button type="button" onclick="myFunction()">add skill</button>
+<br><br>
+   <label> added skills</label>
+	<input type="text" name="added" id="add" readonly>
+	<br>
+	<br>
+	
     
     </center>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

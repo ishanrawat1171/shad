@@ -102,6 +102,24 @@ $(function(){
    Experience <input type="number" name="exp" >
      <br><br>
     
+    
+	<div class="container text-center">
+		
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	File to upload:</td><td><input type="file" name="file" />
+				
+			
+		
+	</div>
+
+	<div class="container text-center">
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+	</div>
+	<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label >Skills</label>
 	
 				
@@ -114,6 +132,8 @@ $(function(){
 	<input type="text" name="added" id="add" readonly>
 	<br>
 	<br>
+	
+	
 	
    
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit">

@@ -8,7 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Rrf {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int Sno;
 private int experience;
 private String skills;
