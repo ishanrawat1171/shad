@@ -242,20 +242,23 @@ public class AppController {
 			rrfno=Integer.parseInt(req.getParameter("rrfno"));
 			int exp=Integer.parseInt(req.getParameter("exp"));
 			Rrf r=new Rrf();
+		
 			r.setExperience(exp);
 			r.setSno(rrfno);
+			List<Rrf> rf=rd.findAll();
+			 
+			for( Rrf rr : rf) {
+				if(rr.getSno()==rrfno) {
+					return new ModelAndView("fail2");	
+
+				}
+			}
 			String s1=req.getParameter("added");
 			r.setSkills(s1);
 			rd.save(r);
 			
-			return new ModelAndView("rrf");	
+			return new ModelAndView("Success3");	
 			}
-		@GetMapping("/Checkout")
-		public ModelAndView view1() {
-			
-			
-			return new ModelAndView("Checkout");
-		}
 		
 		
 		@PostMapping("/Checkout1")
@@ -297,6 +300,21 @@ public class AppController {
 			
 			return new ModelAndView("listofexam");	
 			}
+		
+		
+		
+		
+		@GetMapping("/linkviewprofile")
+		public ModelAndView employee(Model model) {
+			List<Employee> listexam1 = ed.findAll();
+			model.addAttribute("employee", listexam1);
+			
+			return new ModelAndView("linkviewprofile");	
+			}
+		
+		
+		
+		
 		@GetMapping("/addmanager")
 		public ModelAndView addmanager(Model model) {
 		return new ModelAndView("addmanager");	
@@ -380,8 +398,6 @@ public class AppController {
 		@GetMapping("/linking/{sno}")
 		public ModelAndView linking(@PathVariable(name = "sno") int sno, Model model) {
 			
-				
-			
 				rrfsno=sno;
 			System.out.print(rrfsno);
 			List<Employee>e=ed.findAll();
@@ -406,12 +422,22 @@ public class AppController {
 		
 		@GetMapping("/employeeprocess")
 		public ModelAndView view155(HttpServletRequest req,Model model) {
+			int esno= Integer.parseInt(req.getParameter("esno"));
 			String name= req.getParameter("empname");
 			int exp= Integer.parseInt(req.getParameter("exp"));
 			Employee e=new Employee();
+			List<Employee>em=ed.findAll();
+			for(Employee e1 : em) {
+				if(e1.getSno()==esno) {
+					return new ModelAndView("fail");	
+				}
+			}
 			
+			
+			e.setSno(esno);
 			e.setName(name);
 			e.setExperience(exp);
+			
 			
 			
 		String l=req.getParameter("added");
@@ -421,9 +447,10 @@ public class AppController {
 
        
 			
-			return new ModelAndView("employee");	
+			return new ModelAndView("success5");	
 			
 			}
+	
 		@GetMapping("/javadetail")
 		public ModelAndView view16() {
 			
@@ -523,7 +550,7 @@ public class AppController {
 				List<Employee> emp = ed.findAll();
 				model.addAttribute("emp", emp);
 				
-				return new ModelAndView("ViewEmployee");	
+				return new ModelAndView("linkviewprofile");	
 				}
 		 
 			@GetMapping("/ViewSchedule")

@@ -12,6 +12,27 @@
     
     <title th:text="${title}">Add client</title>
 </head>
+<style>
+.m-3 {
+  /* Set rules to fill background */
+  min-height: 30%;
+  min-width: 1004px;
+	
+  /* Set up proportionate scaling */
+  width: 50%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 38%;
+  left: 10%;
+}
+.text-center{
+	position: fixed;
+  top: 0%;
+  left: 10%;
+}
+</style>
 
 
 <!--    Navbar-->
@@ -30,7 +51,7 @@
 					<span class="sr-only">(current)</span>
 			</a></li></ul>
 			           <ul class="navbar-nav ml-auto text-uppercase">
-			            <li class="nav-item "><a class="nav-link" th:href="@{/}">HOME
+			            <li class="nav-item "><a class="nav-link" th:href="@{/}">
 					<span class="sr-only">(current)</span>
 			</a></li>
 			
@@ -55,7 +76,7 @@
 				<label class="col-4 col-form-label">Registered Id</label>
 				
 				<div class="col-8">
-					<input type="number" name="examcode" class="form-control" />
+					<input type="number" name="examcode" class="form-control"  th:required="required" oninvalid="this.setCustomValidity('Enter Registered Id Here')"   oninput="this.setCustomValidity('')"/>
 				</div>
 			</div>
 			
@@ -63,7 +84,7 @@
 				<label class="col-4 col-form-label"> Email</label>
 				<div class="col-8">
 					<input type="text" name="duration" class="form-control" 
-							 />
+							 th:required="required" oninvalid="this.setCustomValidity('Enter email Id Here')"   oninput="this.setCustomValidity('')" />
 				</div>
 			</div>
 			
@@ -71,7 +92,7 @@
 				<label class="col-4 col-form-label">Name</label>
 				<div class="col-8">
 					<input type="text" name="examname" class="form-control" 
-							/>
+							th:required="required" oninvalid="this.setCustomValidity('Enter your name Here')"   oninput="this.setCustomValidity('')"/>
 				</div>
 			</div>
 			
@@ -81,7 +102,7 @@
 			
 			
 			<div>
-				<button type="submit" class="btn btn-primary">Submit</button> 
+				<button type="submit" class="btn btn-success">&nbsp;&nbsp;&nbsp;<b>Submit </b> &nbsp;&nbsp;&nbsp;</button> 
 			</div>
 		</div>
 		</form>

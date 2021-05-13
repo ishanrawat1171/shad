@@ -17,7 +17,6 @@ public class Employee {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int sno;
 
 	 private String name;

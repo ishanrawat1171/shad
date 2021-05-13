@@ -53,6 +53,22 @@ $(function(){
  
 
 <script src="/js/script.js"></script>
+<style>
+.text-center {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 80%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 10%;
+}
+</style>
 </head>
 
 
@@ -84,28 +100,36 @@ $(function(){
     </div>
 </nav>
 <!--    End of Navbar-->
-<h1 style="text-align: center;"> Generate RRF</h1>
-    <section class="banner d-flex justify-content-center align-items-center">
+ <section class="banner d-flex justify-content-center align-items-center">
+        <div class="text-center"> <h1 class="font-weight-bold"><h3>--Manager--</h3>
+        <br>
+        <br><br><br><br>
+            <h1 class="font-weight-bold"><h1>Generate RRF</h1>
+            <br>
+           
+	<div class="container text-center">
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
  	
- <form action="/rrfprocess" style="text-align: center;">
- 	Enter RrfNo <input type="number" name="rrfno">
- 	<br>
+ <form action="/rrfprocess" style="text-align: cenenterter;">
+ 	Enter RRF No.<input type="number" name="rrfno" th:required="required" oninvalid="this.setCustomValidity('Enter Rrf no Here')"   oninput="this.setCustomValidity('')">
+ 	<br><br>
  	
-      Experience <input type="number" name="exp" >
+      Experience &nbsp;&nbsp;&nbsp;<input type="number" name="exp" th:required="required" oninvalid="this.setCustomValidity('Enter experience Here')"   oninput="this.setCustomValidity('')">
      <br><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <label> Enter skills</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;<label> Enter Skills</label>&nbsp;&nbsp;&nbsp;
 	<input type="text" name="skills"  id="plant" placeholder="Enter skills"  >
-<button type="button" onclick="myFunction()">add skill</button>
+<button type="button" class="btn btn-danger" onclick="myFunction()">Add skill</button>
 <br><br>
-   <label> added skills</label>
-	<input type="text" name="added" id="add" readonly>
+ &nbsp;  <label> Added Skills</label>&nbsp;
+	<input type="text" name="added" id="add" readonly th:required="required" oninvalid="this.setCustomValidity('Please add min 1 skil')"   oninput="this.setCustomValidity('')">
 	<br>
 	<br>
 	
     
     </center>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="submit">
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-success "  value="Submit">
 </form>
 
 
